@@ -6,6 +6,8 @@ const mongoose = require("mongoose");
 const app = require("./index");
 const {port, DB_URL} = process.env;
 
+
+
 mongoose.connect (DB_URL)
 .then(()=> Console.log("connected"))
 .catch((err) => console.log (err));
