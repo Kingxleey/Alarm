@@ -47,16 +47,31 @@ role:{
     default: "user",
     enum: ["user", "admin"]
 },
+passwordResetToken: String,
+passwordChangedAt: Date,
+passwordTokenExpired: Date,
 
+active:{
+    type: Boolean,
+    default: true,
+    selection: false,
+},
 
-
-
-
-
-
-
-
+},
+{toObject: {virtual:true}, toJson:{virtual:true}}
+);
+userSchema.pre("save", async function (next){
+    if(!this.isModified("password")){
+        return next()
+    }
+let salt = await bcrypt.genSalt(10);
+this.pasword = await bcrypt.hash(this.password, salt);
+this.passwordConfirm = undefined
+next()
 });
+
+// complete this aspect
+
 
 
 

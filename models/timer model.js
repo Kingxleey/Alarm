@@ -11,22 +11,23 @@ const validator = require("validator");
         sleepTime:{
             type: String,
             trim: true,
-            required: [true, ''],
+            required: true,
         },
 
         wakeupTime:{
             type: String,
             trim: true,
-            required: [true, ''],
+            required: true, 
         },
 
         totalTimeDuration:{
             type: String,
             trim: true,
-            required: [true, ''],
+            required: true, 
         },
     },
 {timestamps:true}
+
     );
     const Timer = ("Timer", timerSchema)
     module.exports = Timer;
